@@ -1,0 +1,37 @@
+{
+    "movieQuotes": [
+      {
+        "quote": "May the Force be with you.",
+        "author": "Star Wars"
+      },
+      {
+        "quote": "There's no place like home.",
+        "author": "The Wizard of Oz"
+      },
+      {
+        "quote": "Here's looking at you, kid.",
+        "author": "Casablanca"
+      },
+      {
+        "quote": "I feel the need - the need for speed.",
+        "author": "Top Gun"
+      },
+      {
+        "quote": "Why so serious?",
+        "author": "The Dark Knight"
+      },
+      {
+        "quote": "To infinity and beyond!",
+        "author": "Toy Story"
+      },
+      {
+        "quote": "You can't handle the truth!",
+        "author": "A Few Good Men"
+      },
+      {
+        "quote": "Just keep swimming.",
+        "author": "Finding Nemo"
+      }
+    ]
+  }
+  

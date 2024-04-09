@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Villain Quotes</title>
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+      background-color: #f5f5f5;
+      background-image: url(510129.jpg);
+      background-size: cover;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #quoteDisplay {
+      margin-top: 20px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #quoteDisplay p {
+      margin: 0;
+    }
+  </style>
+  </style>
+</head>
+<body>
+
+  <h1>Villain Quotes</h1>
+
+  <button onclick="getRandomVillainQuote()">Get Quote</button>
+
+  <div id="quoteDisplay"></div>
+
+  <script>
+    
+    function getRandomVillainQuote() {
+     
+      fetch('SV.json')
+        .then(response => response.json())
+        .then(data => {
+         
+          const villainQuotes = data.villainQuotes;
+          const randomIndex = Math.floor(Math.random() * villainQuotes.length);
+          const randomVillainQuote = villainQuotes[randomIndex];
+
+          
+          displayVillainQuote(randomVillainQuote);
+        })
+        .catch(error => console.error('Error fetching villain quotes:', error));
+    }
+
+    
+    function displayVillainQuote(villainQuote) {
+      const quoteDisplay = document.getElementById('quoteDisplay');
+      quoteDisplay.innerHTML = `<p><em>"${villainQuote.quote}"</em></p><p>- ${villainQuote.author}</p>`;
+    }
+  </script>
+
+</body>
+</html>

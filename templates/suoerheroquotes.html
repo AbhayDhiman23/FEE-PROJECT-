@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Superhero Quotes</title>
+  <style>
+   
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 50px;
+    background-color: #f4f4f4; 
+    background-image: url(705204.jpg);
+    background-size: cover;
+  }
+
+  h1 {
+    color: #4285f4;
+  }
+
+  button {
+    background-color: #4caf50; 
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  button:hover {
+    background-color: #45a049; 
+  }
+
+  #quoteDisplay {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+
+  </style>
+</head>
+<body>
+
+  <h1>Superhero Quotes</h1>
+
+  <button onclick="getRandomQuote()">Get Quote</button>
+
+  <div id="quoteDisplay"></div>
+
+  <script>
+    
+    function getRandomQuote() {
+    
+      fetch('SH.json')
+        .then(response => response.json())
+        .then(data => {
+        
+          const quotes = data.quotes;
+          const randomIndex = Math.floor(Math.random() * quotes.length);
+          const randomQuote = quotes[randomIndex];
+
+          
+          displayQuote(randomQuote);
+        })
+        .catch(error => console.error('Error fetching quotes:', error));
+    }
+
+    
+    function displayQuote(quote) {
+      const quoteDisplay = document.getElementById('quoteDisplay');
+      quoteDisplay.innerHTML = `<p><em>"${quote.quote}"</em></p><p>- ${quote.author}</p>`;
+    }
+  </script>
+
+</body>
+</html>

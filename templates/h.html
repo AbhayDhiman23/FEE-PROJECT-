@@ -1,0 +1,55 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Data Display</title>
+</head>
+<body>
+    <div id="quote-container"></div>
+    <button id="fetch-quote-btn">Get Motivated!</button>
+
+    <script >
+     // script.js
+document.addEventListener("DOMContentLoaded", function() {
+    const quoteContainer = document.getElementById("quote-container");
+    const fetchQuoteButton = document.getElementById("fetch-quote-btn");
+
+    // Function to fetch and display a quote
+    function fetchAndDisplayQuote() {
+        // Replace "motivation_quotes.json" with the actual file path or API endpoint
+        fetch("motivation_quotes.json")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Get a random quote from the JSON data
+                const randomQuote = data.quotes[Math.floor(Math.random() * data.quotes.length)];
+
+                // Display the quote in the HTML
+                const quoteElement = document.createElement("p");
+                quoteElement.textContent = `${randomQuote.quote} - ${randomQuote.author}`;
+                
+                // Clear previous quotes and append the new one
+                quoteContainer.innerHTML = "";
+                quoteContainer.appendChild(quoteElement);
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    }
+
+    // Add a click event listener to the button
+    fetchQuoteButton.addEventListener("click", fetchAndDisplayQuote);
+
+    // Fetch and display a quote on page load
+    fetchAndDisplayQuote();
+});
+
+    </script>
+</body>
+</html>

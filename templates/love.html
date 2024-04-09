@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Quotes</title>
+<style>
+ 
+ body {
+    font-family: 'Helvetica', sans-serif;
+    text-align: center;
+    margin: 50px;
+    background-color: #f8f8f8;
+    background-image: url(103008.jpg);
+    background-size: cover;
+}
+
+h1 {
+    color: #e44d26;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#loveQuotes {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quote {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.author {
+    font-style: italic;
+    color: #555;
+}
+
+
+
+</style>
+  
+</head>
+<body>
+  <h1>Love Quotes</h1>
+  <button id="showQuoteButton">Show me a quote</button>
+  <div id="loveQuotes"></div>
+
+  <script>
+    
+    function displayRandomQuote(quotes) {
+      const loveQuotesContainer = document.getElementById('loveQuotes');
+      loveQuotesContainer.innerHTML = '';
+
+      
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const randomQuote = quotes[randomIndex];
+
+      
+      const quoteElement = document.createElement('div');
+      quoteElement.classList.add('quote');
+      quoteElement.textContent = `"${randomQuote.quote}"`;
+
+      const authorElement = document.createElement('div');
+      authorElement.classList.add('author');
+      authorElement.textContent = `- ${randomQuote.author}`;
+
+      quoteElement.appendChild(authorElement);
+      loveQuotesContainer.appendChild(quoteElement);
+    }
+
+    
+    fetch('love.json')
+      .then(response => response.json())
+      .then(data => {
+        // Attach click event to the button
+        const showQuoteButton = document.getElementById('showQuoteButton');
+        showQuoteButton.addEventListener('click', () => {
+          displayRandomQuote(data.loveQuotes);
+        });
+      })
+      .catch(error => console.error('Error loading love quotes:', error));
+  </script>
+</body>
+</html>

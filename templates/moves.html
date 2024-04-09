@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Quotes</title>
+  <style>
+    /* Add this style block inside the <style> tag in your HTML file or link an external CSS file */
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 50px;
+    background-color: #f8f8f8;
+    background-image: url(1337265.png);
+    background-size: cover;
+}
+
+h1 {
+    color: white;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#quoteDisplay {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#quoteDisplay p {
+    margin: 0;
+}
+
+#quoteDisplay em {
+    font-style: italic;
+    color: #333;
+}
+
+#quoteDisplay p:last-child {
+    margin-top: 10px;
+    color: #666;
+}
+
+  </style>
+</head>
+<body>
+
+  <h1>Movie Quotes</h1>
+
+  <button onclick="getRandomMovieQuote()">Get Quote</button>
+
+  <div id="quoteDisplay"></div>
+
+  <script>
+    
+    function getRandomMovieQuote() {
+      
+      fetch('movies.json')
+        .then(response => response.json())
+        .then(data => {
+          
+          const movieQuotes = data.movieQuotes;
+          const randomIndex = Math.floor(Math.random() * movieQuotes.length);
+          const randomMovieQuote = movieQuotes[randomIndex];
+
+        
+          displayMovieQuote(randomMovieQuote);
+        })
+        .catch(error => console.error('Error fetching movie quotes:', error));
+    }
+
+    
+    function displayMovieQuote(movieQuote) {
+      const quoteDisplay = document.getElementById('quoteDisplay');
+      quoteDisplay.innerHTML = `<p><em>"${movieQuote.quote}"</em></p><p>- ${movieQuote.author}</p>`;
+    }
+  </script>
+
+</body>
+</html>

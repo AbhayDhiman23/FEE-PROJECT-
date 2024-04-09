@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Quotes</title>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url(686630.jpg);
+    background-size: cover;
+}
+
+h1 {
+    color: white;
+}
+
+#quote-display {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #ffffff;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #3498db;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    transition: left 0.3s ease-in-out;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+<h1>Life Quotes</h1>
+
+<div id="quote-display"></div>
+<button onclick="displayRandomQuote()">Get Another Quote</button>
+
+<script>
+    
+    async function fetchQuotes() {
+        try {
+            const response = await fetch('life.json');
+            const data = await response.json();
+            return data.quotes;
+        } catch (error) {
+            console.error('Error fetching quotes:', error);
+        }
+    }
+
+    
+    async function displayRandomQuote() {
+        const quotes = await fetchQuotes();
+
+        if (quotes) {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const randomQuote = quotes[randomIndex];
+
+            
+            const quoteDisplay = document.getElementById("quote-display");
+            quoteDisplay.innerHTML = '"' + randomQuote.text + '" - ' + randomQuote.author;
+        }
+    }
+
+    
+    displayRandomQuote();
+</script>
+
+</body>
+</html>

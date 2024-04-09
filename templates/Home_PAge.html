@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Genrator</title>
+    <!-- <link rel="stylesheet" href="Home_page.css"> -->
+      <style>
+        
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    background-image: url("/static/wall.png");
+    background-size: cover;
+}
+
+*{
+    /* background-image: url(wall.png); */
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+    background: position 100px;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.heading {
+    color: #000000;
+    text-align: center;
+    display: flexbox;
+}
+
+.tags {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    display: inline-flexbox;
+    margin-top: 200px;
+}
+
+.tags li {
+    display: inline-block;
+    margin: 10px;
+}
+
+.tags a {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 23px;
+}
+
+.tags a {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+  }
+  
+  .tags a:hover {
+    background-color: #ff0000;
+    opacity: 0.8;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+ 
+  
+h4{
+    text-align: center;
+}
+.tags li:hover{
+    background-color: #ff0000;
+}
+
+      </style>
+</head>
+<body>
+    <div>
+
+    
+    <h2 class="heading">
+        Welcome To  Random Quote Genrator 
+    </h2>
+
+    <h4>
+        Quotes available on Differnet Genre 
+    </h4>
+    <ul class="tags">
+        <li>
+            <a href="index.html">Random Quote</a>
+        </li>
+        <ul>
+            <a href="love.html">Love</a>
+        </ll>
+        <li>
+            <a href="life.html">Life</a>
+        </li>
+        <label>
+            <a href="suoerheroquotes.html">SuperHero Quotes </a>
+        </li>
+        <li>
+            <a href="villan.html">Villan Quotes </a>
+        </li>
+        <li>
+             <a href="moves.html">Movies Quotes </a>  
+        </li>
+        <li>
+            <a href="motivation.html">Motivation</a>
+        </li>
+
+
+
+    </ul>
+</div>
+</body>
+</html>
